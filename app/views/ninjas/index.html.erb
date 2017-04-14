@@ -1,0 +1,52 @@
+
+<div class='container'>
+
+
+<p>
+  Gold: <%= @gold %>
+</p>
+
+
+<div class='row'>
+  <form action='/farm' method='post'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+      <h4>Farm</h4>
+      <p>Earns 10-20 golds</p>
+      <input type='submit' value='Find Gold'>
+  </form>
+</div>
+  <div class='row'>
+    <form action='/cave' method='post'>
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <h4>Cave</h4>
+        <p>Earns 5-10 golds</p>
+        <input type='submit' value='Find Gold'>
+    </form>
+  </div>
+    <div class='row'>
+      <form action='/house' method='post'>
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+          <h4>House</h4>
+          <p>Earns 2-5 golds</p>
+          <input type='submit' value='Find Gold'>
+      </form>
+    </div>
+      <div class='row'>
+        <form action='/casino' method='post'>
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <h4>Casino</h4>
+            <p>Earns/Takes 0-50 golds</p>
+            <input type='submit' value='Find Gold'>
+        </form>
+</div>
+  <div id='activities'>
+   <% @activity.each do |record| %>
+     <% if record['won']== true %>
+    <p style="color:green"><%= record["sentence"] %></p>
+    <% else %>
+    <p style="color:red"><%= record["sentence"] %></p>
+    <% end %>
+  <% end %>
+  </div>
+</div>
